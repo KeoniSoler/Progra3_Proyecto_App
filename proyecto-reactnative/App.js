@@ -1,20 +1,13 @@
 import { Text, View, StyleSheet } from 'react-native';
+import {NavigationContainer} from "@react-navigation/native";
 import PrimerComponente from './src/components/PrimerComponente';
-import Home from './src/screens/Home';
+import StackNavigation from './src/navigation/StackNavigation';
 
 export default function App() {
   return (
-    <View style={styles.main}>
-      <Text>Arrancamos con React Native</Text>
-      {/* <PrimerComponente /> */}
-      <Home />
-    </View>
+    <NavigationContainer>
+      <StackNavigation />
+    </NavigationContainer>
   );
-}
-
-const styles = StyleSheet.create({
-  main:{
-    flex: 1
-  }
-});
+};
 

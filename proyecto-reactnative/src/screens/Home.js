@@ -1,13 +1,19 @@
 import React, {Component} from "react";
-import {Text, View, Image, StyleSheet, FlatList, ActivityIndicator} from "react-native";
+import {Text, View, Image, StyleSheet, FlatList, ActivityIndicator, TouchableOpacity} from "react-native";
 
 class Home extends Component {
     constructor(props) {
         super(props)
     }
+    redireccionar(){
+        this.props.navigation.navigate('Login')
+    }
     render(){
         return(
             <View>
+                <TouchableOpacity onPress={() => this.props.redireccionar()}>
+                    <Text>Login</Text>
+                </TouchableOpacity>
                 <ActivityIndicator
                     color={'red'}
                     size={30}
