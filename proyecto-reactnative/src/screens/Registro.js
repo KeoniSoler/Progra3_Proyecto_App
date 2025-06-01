@@ -10,6 +10,7 @@ class Registro extends Component {
             contraseña:'',
             username:'',
             error: false,
+            mensajeError: '',
         }
     }
 
@@ -43,7 +44,10 @@ class Registro extends Component {
                     })
                     .then(()=> {this.props.navigation.navigate('BottomTabs')} )  
                 })
-                .catch(err => console.log('err: ', err));
+                .catch(
+                  error => {console.log('error: ', error);
+                  this.setState({ error: true, mensajeError: error.message });
+                });
         }}
     render(){
         return (
@@ -85,7 +89,18 @@ class Registro extends Component {
              
                 <Text style={styles.buttonText} >Registrarse</Text>
              </TouchableOpacity>
-             
+
+             {this.state.error && (
+              <Text style={styles.errorText}>{this.state.mensajeError}</Text>
+             )}
+
+
+             <View style={styles.loginLinkContainer}>
+                       <Text style={styles.loginText}>¿No tenés cuenta?</Text>
+                       <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
+                         <Text style={styles.loginLink}>Iniciar seción</Text>
+                       </TouchableOpacity>
+              </View>
 
         </View>
     );
@@ -115,7 +130,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   button: {
-    backgroundColor: '#007BFF',
+    backgroundColor: 'purple',
     paddingVertical: 14,
     borderRadius: 10,
     alignItems: 'center',
@@ -131,5 +146,19 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: 'center',
   },
+  loginLinkContainer: {
+  flexDirection: 'row',
+  justifyContent: 'center',
+  marginTop: 20,
+},
+loginText: {
+  color: '#555',
+  marginRight: 5,
+},
+loginLink: {
+    color: '#007BFF',
+    fontWeight: 'bold',
+  },
+
 });
 export default Registro;
