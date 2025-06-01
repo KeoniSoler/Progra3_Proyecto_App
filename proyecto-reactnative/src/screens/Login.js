@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Text, View, Image, StyleSheet, FlatList, ActivityIndicator, TouchableOpacity} from "react-native";
 
-class Registro extends Component {
+class Login extends Component {
     constructor(props) {
         super(props)
     }
@@ -16,3 +16,4 @@ class Registro extends Component {
         </View>
     }
 }
+export default Login;
