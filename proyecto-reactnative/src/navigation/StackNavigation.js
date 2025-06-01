@@ -12,7 +12,7 @@ function StackNavigation() {
         <Stack.Navigator>
             <Stack.Screen name="Registro" component={Registro} options={{headerShown: false}}/>
             <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
-            <Stack.Screen name="Tab" component={BottomTabs} options={{headerShown: false}}/>
+            <Stack.Screen name="BottomTabs" component={BottomTabs} options={{headerShown: false}}/>
         </Stack.Navigator>
     )
 }

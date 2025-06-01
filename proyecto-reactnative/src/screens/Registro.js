@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Text, View, Image, StyleSheet, FlatList, ActivityIndicator, TouchableOpacity} from "react-native";
+import {Text, View, Image, StyleSheet, TextInput, FlatList, ActivityIndicator, TouchableOpacity} from "react-native";
 import {auth, db} from '../firebase/config'; 
 
 class Registro extends Component {
