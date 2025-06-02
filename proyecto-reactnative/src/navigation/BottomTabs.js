@@ -9,9 +9,9 @@ const Tab = createBottomTabNavigator();
 export default function BottomTabs() {
     return (
         <Tab.Navigator>
-            <Tab.Screen name='Feed' component={Feed} options={{tabBarIcon: () => <FontAwesome name="home" size={24} color={'black'}/>}}/>
-             <Tab.Screen name='Perfil' component={Perfil} options={{tabBarIcon: () => <FontAwesome name="male" size={24} color="black" />}}/>
-            <Tab.Screen name='Posteo' component={Posteo} options={{tabBarIcon: () => <FontAwesome name="plus-square-o" size={24} color="black" />}}/>
+            <Tab.Screen name='Feed' component={Feed} options={{headerShown: false, tabBarIcon: () => <FontAwesome name="home" size={24} color={'black'}/>}}/>
+            <Tab.Screen name='Posteo' component={Posteo} options={{headerShown: false, tabBarIcon: () => <FontAwesome name="plus-square-o" size={24} color="black" />}}/>
+            <Tab.Screen name='Perfil' component={Perfil} options={{headerShown: false, tabBarIcon: () => <FontAwesome name="male" size={24} color="black" />}}/>
         </Tab.Navigator>
     );
 }
