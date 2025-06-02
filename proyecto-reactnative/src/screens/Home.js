@@ -1,35 +1,31 @@
-import React, { Component } from "react";
-import { View, Text, Image, StyleSheet, FlatList, ActivityIndicator, TouchableOpacity } from "react-native";
+import React, { Component } from 'react';
+import { View, Text, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
+import { auth, db } from '../firebase/config';
+import Publicacion from '../components/Publicacion';
 
-class Home extends Component {
-    constructor(props) {
-        super(props)
-    }
-    redireccionar(pantalla) {
-        this.props.navigation.navigate(pantalla)
-    }
-    render() {
-        return (
-            <View style={styles.contenedor}>
-                <TouchableOpacity onPress={() => this.redireccionar('Login')}>
-                    <Text>Login</Text>
-                </TouchableOpacity>
-                <ActivityIndicator
-                    color={'red'}
-                    size={40}
-                />
-                <Text>Home</Text>
-            </View>
-        )
-    }
+
+export default class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      posts: [],
+    };
+  }
+  render() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>Home</Text>
+    </View>
+  );}
 }
+
 const styles = StyleSheet.create({
-    contenedor:{
-        flex: 1
-    },
-    imagen1: {
-        height: 200,
-        width: 200,
-    }
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  text: {
+    fontSize: 20,
+  },
 });
-export default Home;
