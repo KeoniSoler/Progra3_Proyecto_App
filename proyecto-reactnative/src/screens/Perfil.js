@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, FlatList, StyleSheet, ImageBackground } from 'react-native';
 import { auth, db } from '../firebase/config';
 import Publicacion from '../components/Publicacion';
 
@@ -52,36 +52,42 @@ export default class Perfil extends Component {
     render() {
 
         return (
-            <View style={styles.cajaPrincipal}>
-                <Text style={styles.titulo}>Mi Perfil</Text>
-                <Text style={styles.nombre}>Nombre de usuario: {this.state.username}</Text>
-                <Text style={styles.email}>Email:{auth.currentUser.email}</Text>
-                {
-                    this.state.usuPosts.length > 0 ?
-                        <FlatList
-                            data={this.state.usuPosts}
-                            keyExtractor={(item) => item.id}
-                            renderItem={({ item }) =>
-                                <Publicacion data={item.data} id={item.id} />
-                            }
+            <ImageBackground
+                source={{ uri: 'https://wallpapers-clan.com/wp-content/uploads/2023/09/glowing-up-not-giving-up-purple-black-background-scaled.jpg' }}
+                style={styles.fondo}
+                resizeMode="cover"
+            >
+                <View style={styles.cajaPrincipal}>
+                    <Text style={styles.titulo}>Mi Perfil</Text>
+                    <Text style={styles.nombre}>Nombre de usuario: {this.state.username}</Text>
+                    <Text style={styles.email}>Email: {auth.currentUser.email}</Text>
+                    {
+                        this.state.usuPosts.length > 0 ?
+                            <FlatList
+                                data={this.state.usuPosts}
+                                keyExtractor={(item) => item.id}
+                                renderItem={({ item }) =>
+                                    <Publicacion data={item.data} id={item.id} />
+                                }
 
-                        />
-                        :
-                        <Text style={styles.noPosteos}>Aun no has Publicado nada.</Text>
-                }
-                <TouchableOpacity style={styles.botonLogout} onPress={() => this.logout()}>
-                    <Text style={styles.textoLogout}>Cerrar Sesión</Text>
-                </TouchableOpacity>
-            </View>
+                            />
+                            :
+                            <Text style={styles.noPosteos}>Aun no has Publicado nada.</Text>
+                    }
+                    <TouchableOpacity style={styles.botonLogout} onPress={() => this.logout()}>
+                        <Text style={styles.textoLogout}>Cerrar Sesión</Text>
+                    </TouchableOpacity>
+                </View>
+            </ImageBackground>
         )
     }
 
 }
 const styles = StyleSheet.create({
-    cajaPrincipal: {
+    fondo: {
         flex: 1,
-        padding: 20,
-        backgroundColor: 'black'
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     titulo: {
         fontSize: 26,
@@ -100,7 +106,7 @@ const styles = StyleSheet.create({
         color: 'white',
         marginBottom: 10,
     },
-    noPosteos:{
+    noPosteos: {
         fontSize: 18,
         color: 'white',
         textAlign: 'center',

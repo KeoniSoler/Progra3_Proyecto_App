@@ -65,16 +65,18 @@ export default class Publicacion extends Component {
     render() {
         return (
             <View style={styles.cajaPrincipal}>
-                <Text style={styles.titulo}>Publicacion de:{this.props.data.owner}</Text>
+                <Text style={styles.titulo}> {this.props.data.owner}</Text>
                 <Text style={styles.texto}>{this.props.data.texto}</Text>
-                <Text style={styles.likes}>Likes: {this.props.data.cantidadLikes}</Text>
                 {
                     this.state.like ?
-                        <TouchableOpacity onPress={() => this.Deslikear()}>
+                        <TouchableOpacity onPress={() => this.Deslikear()} style={styles.likeContainer}>
                             <FontAwesome name='heart' size={25} color='red' />
-                        </TouchableOpacity> :
-                        <TouchableOpacity onPress={() => this.Likear()}>
-                            <FontAwesome name='heart-o' size={25} color='black' />
+                            <Text style={styles.likes}>Likes: {this.state.cantidadLikes}</Text>
+                        </TouchableOpacity>
+                        :
+                        <TouchableOpacity onPress={() => this.Likear()} style={styles.likeContainer}>
+                            <FontAwesome name='heart-o' size={25} color='white' />
+                            <Text style={styles.likes}>Likes: {this.state.cantidadLikes}</Text>
                         </TouchableOpacity>
                 }
                 <TouchableOpacity onPress={() => this.borrarPosteo()} style={styles.borrar}>
@@ -86,30 +88,41 @@ export default class Publicacion extends Component {
 }
 const styles = StyleSheet.create({
     cajaPrincipal: {
-        flex: 1,
-        justifyContent: 'center',
-        padding: 20,
-        backgroundColor: 'black',
+        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+        borderColor: 'grey',
+        borderWidth: 1,
+        borderRadius: 12,
+        margin: 10,
+        padding: 15,
+        width: 300,
     },
     titulo: {
-        fontSize: 28,
-        fontWeight: 'bold',
+        fontSize: 20,
+        fontWeight: 'normal',
         textAlign: 'center',
-        marginBottom: 30,
+        marginBottom: 10,
         color: 'white',
     },
     texto: {
-        fontSize: 20,
-        textAlign: 'center',
-        marginBottom: 20,
-        color: 'white',
-    },
-    likes: {
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: 'bold',
         textAlign: 'center',
-        marginBottom: 30,
+        marginBottom: 10,
+        color: 'purple',
+    },
+    likes: {
+        fontSize: 16,
+        fontWeight: 'normal',
+        textAlign: 'center',
+        marginBottom: 10,
         color: 'white',
+    },
+    likeContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 10,
+        justifyContent: 'center',
+        gap: 10,
     },
     borrar: {
         backgroundColor: 'purple',
@@ -120,8 +133,7 @@ const styles = StyleSheet.create({
     },
     borrarTexto: {
         color: 'white',
-        fontSize: 18,
+        fontSize: 16,
         fontWeight: 'bold',
     },
 });
-

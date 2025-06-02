@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, TextInput } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, ImageBackground } from "react-native";
 import { auth, db } from '../firebase/config';
 
 
@@ -37,43 +37,48 @@ export default class Posteo extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <Text style={styles.title}>Crear un nuevo posteo</Text>
-                <View>
-                    <TextInput
-                        style={styles.input}
-                        keyboardType='default'
-                        value={this.state.texto}
-                        onChangeText={(texto) => this.setState({ texto: texto, error: false })}
-                        placeholder='Subite algo!'
-                    />
-                    <TouchableOpacity style={styles.button} onPress={() => this.nuevoPost()}>
-                        <Text style={styles.buttonText}>Publicar</Text>
-                    </TouchableOpacity>
+            <ImageBackground
+                source={{ uri: 'https://wallpapers-clan.com/wp-content/uploads/2023/09/glowing-up-not-giving-up-purple-black-background-scaled.jpg' }}
+                style={styles.fondo}
+                resizeMode="cover"
+            >
+                <View style={styles.container}>
+                    <Text style={styles.title}>Crear un nuevo posteo</Text>
+                    <View>
+                        <TextInput
+                            style={styles.input}
+                            keyboardType='default'
+                            value={this.state.texto}
+                            onChangeText={(texto) => this.setState({ texto: texto, error: false })}
+                            placeholder='Subite algo!'
+                        />
+                        <TouchableOpacity style={styles.button} onPress={() => this.nuevoPost()}>
+                            <Text style={styles.buttonText}>Publicar</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
+            </ImageBackground>
         );
 
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
+    fondo: {
         flex: 1,
-        backgroundColor: '#f5f5f5',
         justifyContent: 'center',
-        padding: 20,
+        alignItems: 'center',
     },
     title: {
         fontSize: 26,
         fontWeight: 'bold',
         textAlign: 'center',
         marginBottom: 20,
-        color: '#333',
+        color: 'white',
     },
     input: {
-        backgroundColor: '#fff',
-        borderColor: '#ccc',
+        backgroundColor: 'white',
+        borderColor: 'grey',
         borderWidth: 1,
         borderRadius: 10,
         padding: 15,
@@ -90,7 +95,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     buttonText: {
-        color: '#fff',
+        color: 'white',
         fontSize: 17,
         fontWeight: 'bold',
     },
